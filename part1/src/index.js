@@ -1,25 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react' //应用导入了 useState 函数
 import ReactDOM from 'react-dom'
 
-const Hello = (props) => {
+const Display = (props) => {
     return (
-        <div>
-            <p>Hello world {props.name}</p>
-            <strong>React 的核心理念，就是将许多定制化的、可重用的组件组合成应用。</strong>
-            <p>【props：向组件传递数据】</p>
-            <p>还要记住 React 组件名称必须大写</p>
-        </div>
+        <div>{props.counter}</div>
+    )
+}
+
+const Button = (props) => {
+    return (
+        <button onClick={props.handleClick}>
+            {props.text}
+        </button>
     )
 }
 
 const App = () => {
+    const [counter, setCounter] = useState(0)
+
+    const increaseByOne = () => setCounter(counter + 1)
+    const decreaseByOne = () => setCounter(counter - 1)
+    const setToZero = () => setCounter(0)
+
     return (
         <div>
-            <h1>Greetings</h1>
-            <Hello name="React" />
+            <Display counter={counter} />
+            <Button
+                handleClick={increaseByOne}
+                text='plus'
+            />
+            <Button
+                handleClick={setToZero}
+                text='zero'
+            />
+            <Button
+                handleClick={decreaseByOne}
+                text='minus'
+            />
         </div>
     )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
-
+ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+)

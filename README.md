@@ -13,3 +13,5 @@
 - Javascript
 - 组件状态 事件处理
 - 深入React应用调试
+
+> 一个JavaScript 老鸟和菜鸟有什么区别? 老鸟使用 console.log的次数是菜鸟的数十倍甚至数百倍。console.log('props value is', props)
