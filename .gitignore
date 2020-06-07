@@ -4,6 +4,7 @@
 /node_modules
 /part1/node_modules
 /Nodejs/node_modules
+/express/node_modules
 /.pnp
 .pnp.js
 

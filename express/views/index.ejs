@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <style>
+    .red {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="/add" method="post">
+    <label for="title">标题</label>
+    <input type="text" name="title">
+    <input type="submit" value="add">
+  </form>
+
+  <ul>
+    <% list.forEach(function(article,index){ %>
+    <li><%= article.title %> <a class="red" href="/del?index=<%=index%>">X</a> </li>
+    <% }) %>
+  </ul>
+</body>
+
+</html>

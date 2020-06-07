@@ -1,14 +1,21 @@
-// fs 模块提供了用于与文件系统进行交互（以类似于标准 POSIX 函数的方式）的 API。
-// 所有的文件系统操作都具有同步和异步的形式。
-const fs = require('fs')
+const http = require('http')
+const PORT = 3000
+const HOSTNAME = "127.0.0.1"
 
-fs.readFile('./src/target.txt', (err, data) => {
-    if (err) throw err;
-    console.log('data', data)
+
+const server = http.createServer((req, res) => {
+    console.log("req.url", req.url)
+    let req_url = req.url;
+    if (req_url === '/') {
+        res.end("welcome to index")
+    } else if (req_url === '/login') {
+        res.end("welcome to login")
+    } else {
+        res.end("Not found page")
+    }
 })
 
-const data = new Uint8Array(Buffer.from('Node.js 中文网'));
-fs.writeFile('./src/写入文件.txt', data, (err) => {
-    if (err) throw err
-    console.log("文件已经保存")
+server.listen(PORT, HOSTNAME, () => {
+    console.log(`服务器运行在 http://${HOSTNAME}:${PORT}/`)
 })
+
